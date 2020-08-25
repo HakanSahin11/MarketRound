@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-search-box',
@@ -8,9 +9,8 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class SearchBoxComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

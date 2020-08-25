@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { SearchBoxComponent } from '../search-box/search-box.component';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,7 @@ export class HeaderComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {}
+  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private router: Router) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
@@ -29,6 +30,10 @@ export class HeaderComponent {
       console.log('The dialog was closed');
     });
   }
+
+  routeClick= function () {
+    this.router.navigateByUrl('/register')
+  };
 
 }
 

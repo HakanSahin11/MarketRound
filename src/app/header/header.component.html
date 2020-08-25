@@ -22,7 +22,7 @@
       </button>
       <span>MarketRound</span>
       <span class="spacer"></span>
-      <button mat-raised-button color="accent">Opret Annonce</button>
+      <button mat-raised-button color="accent" (click)="routeClick()">Opret Annonce</button>
       <button mat-raised-button (click)="openDialog()" color="accent">Login</button>
     </mat-toolbar>
     <!-- Add Content Here -->
@@ -31,3 +31,5 @@
     <app-latest-products></app-latest-products>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

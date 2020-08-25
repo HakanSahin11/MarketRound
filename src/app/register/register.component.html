@@ -1,0 +1,75 @@
+<form class="register-form">
+    <table class="register-full-width" cellspacing="0"><tr>
+        <!-- First Name-->
+      <td><mat-form-field class="register-full-width">
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+      <!-- Last Name-->
+      <td><mat-form-field class="register-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+    </tr></table>
+
+    <table class="register-full-width" cellspacing="0"><tr>
+        <!-- UserName-->
+        <td><mat-form-field class="register-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput>
+        </mat-form-field></td>
+        <!-- Password-->
+        <td><mat-form-field class="register-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput>
+        </mat-form-field></td>
+    </tr></table>
+  
+    <p>
+        <!-- Email-->
+      <mat-form-field class="register-full-width">
+        <mat-label>Email</mat-label>
+        <textarea matInput placeholder="email@something.com"></textarea>
+    </mat-form-field>
+        <!-- Address-->
+      <mat-form-field class="register-full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+    </mat-form-field>
+    </p>
+  
+    <table class="register-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="register-full-width">
+        <mat-label>country</mat-label>
+        <input matInput placeholder="Denmark">
+        </mat-form-field></td>
+      <td><mat-form-field class="register-full-width">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="Ex. San Francisco">
+      </mat-form-field></td>
+    </tr></table>
+
+    <table class="register-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="register-full-width">
+            <mat-label>Phonenumber</mat-label>
+            <input matInput placeholder="12345678">
+          </mat-form-field></td>
+          <td><mat-form-field class="register-full-width">
+            <mat-label>Postal Code</mat-label>
+            <input matInput #postalCode maxlength="4" placeholder="Ex. 8260">
+            <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint>
+          </mat-form-field></td>
+    </tr></table>
+    
+  </form>       
+
+  <!-- 
+        "username":"Test4",
+        "password":"TestPW",
+        "firstName":"TestFirst",
+        "lastName":"TestLast",
+        "phoneNumber":2344,
+        "country":"TestCountry",
+        "city":"TestCity",
+        "address":"TestAddress"
+  -->
