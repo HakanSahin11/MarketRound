@@ -7,7 +7,7 @@ namespace MarkedRound.Model
 {
     public class CreateProductModel
     {
-        public CreateProductModel(string username, string pictureId, int price, string title, string description, string[] tags)
+        public CreateProductModel(string username, string pictureId, int price, string title, string description, List<string> tags)
         {
             this.username = username;
             this.pictureId = pictureId;
@@ -22,6 +22,6 @@ namespace MarkedRound.Model
         public int price { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public string[] tags { get; set; }
+        public List<string> tags { get; set; }
     }
 }

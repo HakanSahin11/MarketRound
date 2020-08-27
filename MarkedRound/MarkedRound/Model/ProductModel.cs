@@ -8,7 +8,7 @@ namespace MarketRound.Model
 {
     public class ProductModel
     {
-        public ProductModel(ObjectId id, string pictureId, ObjectId sellerId, ObjectId commentId, int price, string description, string title, string[] tags)
+        public ProductModel(ObjectId? id, string pictureId, ObjectId? sellerId, ObjectId? commentId, int price, string description, string title, List<string> tags, string salt)
         {
             _id = id;
             this.pictureId = pictureId;
@@ -18,15 +18,17 @@ namespace MarketRound.Model
             this.description = description;
             this.title = title;
             this.tags = tags;
+            this.salt = salt;
         }
 
-        public ObjectId _id { get; set; }
+        public ObjectId? _id { get; set; }
         public string pictureId { get; set; }
-        public ObjectId sellerId { get; set; }
-        public ObjectId commentId { get; set; }
+        public ObjectId? sellerId { get; set; }
+        public ObjectId? commentId { get; set; }
         public int price { get; set; }
         public string description { get; set; }
         public string title { get; set; }
-        public string[] tags { get; set; }
+        public List<string> tags { get; set; }
+        public string salt { get; set; }
     }
 }

@@ -63,27 +63,32 @@ namespace MarketRound.HelpClasses
         #region Create New Offer / Product
         public static bool createOffer(CreateProductModel product, IMongoDatabase client, ObjectId sellerId)
         {
+            Encryptor _encrypter = new Encryptor(publicKey);
+            var salt = Convert.ToBase64String(generateSalt());
+            ProductModel productModel = new ProductModel(null, product.pictureId, null, null, product.price, product.description, product.title, product.tags, salt);
+            var EncryptedUser = _encrypter.ProductObjectToEncryptDecrypt(productModel, salt, "Encrypt");
+
             var tags = new BsonArray();
             var commentId = ObjectId.GenerateNewId();
-            foreach (var item in product.tags)
+            foreach (var item in EncryptedUser.tags)
             {
                 tags.Add(item);
             }
             var newProduct = new BsonDocument
             {
-                {"pictureId" , product.pictureId},
+                {"pictureId" , EncryptedUser.pictureId},
                 {"sellerId" , sellerId},
                 {"commentId" , commentId},
-                {"price" , product.price},
-                {"description" , product.description},
-                {"title" , product.title},
-                { "tags" , tags }
+                {"price" , EncryptedUser.price},
+                {"description" , EncryptedUser.description},
+                {"title" , EncryptedUser.title},
+                { "tags" , tags },
+                {"salt", salt }
             };
-
             client.GetCollection<BsonDocument>("products").InsertOne(newProduct);
 
             var productId = Products(null, sellerId, commentId)[0]._id;
-            client.GetCollection<BsonDocument>("comments").InsertOne(createComment(client, productId, sellerId));
+            client.GetCollection<BsonDocument>("comments").InsertOne(createComment(client, (ObjectId)productId, sellerId));
             //todo add encryption if time is avalible
             ChangeUserInput(productId.ToString(), "products", "commentId", null, null, null, null, null, commentId, "ChangeProductCommentId");
             ChangeUserInput(sellerId.ToString(), "users", "ongoingSales", null, null, null, null, null, productId, "AddProductToUser");

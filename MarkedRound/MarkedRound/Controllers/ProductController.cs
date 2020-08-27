@@ -12,6 +12,7 @@ using MarkedRound.Model;
 using MarketRound.HelpClasses;
 using static MarketRound.Controllers.MainController;
 using static MarketRound.HelpClasses.CreateNew;
+using MarkedRound.HelpClasses;
 
 namespace MarkedRound.Controllers
 {
@@ -42,7 +43,15 @@ namespace MarkedRound.Controllers
                              where c._id == ObjectId.Parse(_id)
                              select c;
             }
-            liste.AddRange(usageQuery);
+
+            Encryptor _encrypter = new Encryptor(publicKey);
+
+            foreach (var item in usageQuery)
+            {
+                // Decrypts user information to readable text
+                var decryptedUsers = _encrypter.ProductObjectToEncryptDecrypt(item, item.salt, "Decrypt");
+                liste.Add(decryptedUsers);
+            }
             return liste;
         }
 

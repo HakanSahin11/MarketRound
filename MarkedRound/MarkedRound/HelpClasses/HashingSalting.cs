@@ -10,19 +10,23 @@ namespace MarketRound.HelpClasses
 {
     public class HashingSalting
     {
+        public static byte[] generateSalt()
+        {
+            //salting section
+            int minSize = 20;
+            int maxSize = 25;
+            Random random = new Random();
+            int saltSize = random.Next(minSize, maxSize);
+            var saltBytes = new byte[saltSize];
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            rng.GetNonZeroBytes(saltBytes);
+            return saltBytes;
+        }
         public static HashSalt HashSaltValues(string pass, byte[] saltBytes)
         {
             if (saltBytes == null)
             {
-                //salting section
-                int minSize = 20;
-                int maxSize = 25;
-                Random random = new Random();
-                int saltSize = random.Next(minSize, maxSize); 
-                saltBytes = new byte[saltSize];
-               // saltBytes = new byte[15];
-                RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-                rng.GetNonZeroBytes(saltBytes);
+                saltBytes = generateSalt();
             }
 
             //Converts passwords to bytes
