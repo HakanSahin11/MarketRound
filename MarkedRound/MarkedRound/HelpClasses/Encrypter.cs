@@ -90,7 +90,6 @@ namespace MarkedRound.HelpClasses
                     Task.WaitAll(Task5);
                     encryptedTags.Add(Convert.ToBase64String(Task5.Result));
                 }
-
                 Task.WaitAll();
                 cryptedProduct.pictureId = Convert.ToBase64String(Task1.Result);
                 cryptedProduct.title = Convert.ToBase64String(Task3.Result);
@@ -108,9 +107,7 @@ namespace MarkedRound.HelpClasses
                 {
                     var Task5 = Task.Run(() => Decrypt(Convert.FromBase64String(product.tags[i]), saltPass));
                     Task.WaitAll(Task5);
-                    var test = Encoding.UTF8.GetString(Task5.Result);
-                    var test2 = Regex.Replace(test, @"(\u0000)+$", "");
-                    DecryptedTags.Add(test2);
+                    DecryptedTags.Add(Regex.Replace(Encoding.UTF8.GetString(Task5.Result), @"(\u0000)+$", ""));
                 }
 
                 Task.WaitAll();
