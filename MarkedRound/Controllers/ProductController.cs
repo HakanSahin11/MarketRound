@@ -133,7 +133,6 @@ namespace MarkedRound.Controllers
             }
             catch 
             {
-
                 return Ok("Error");
             }
         }
