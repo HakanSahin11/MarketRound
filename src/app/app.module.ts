@@ -20,6 +20,8 @@ import { LatestProductsComponent } from './latest-products/latest-products.compo
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { NewItemComponent } from './new-item/new-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     SearchBoxComponent,
     LoginComponent,
     LatestProductsComponent,
-    routingComponents
+    routingComponents,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

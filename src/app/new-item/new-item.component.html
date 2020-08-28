@@ -1,0 +1,28 @@
+<form class="new-item-form" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <table class="new-item-full-width" cellspacing="0"><tr>
+        <!--product-->
+      <td><mat-form-field class="new-item-full-width">
+        <mat-label>Product</mat-label>
+        <input matInput formControlName="Product" type="text" ngModel>
+      </mat-form-field></td>
+      <!--Price-->
+      <td><mat-form-field class="new-item-full-width">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="Price" type="text" ngModel>
+      </mat-form-field></td>
+    </tr></table>
+  
+    <p>
+        <!-- Description-->
+      <mat-form-field class="new-item-full-width">
+        <mat-label>Descreption</mat-label>
+        <textarea matInput formControlName="Descreption" type="text" ngModel placeholder="Type something about the item you want to sell"></textarea>
+    </mat-form-field>
+        <!-- Tags-->
+      <mat-form-field class="new-item-full-width">
+        <mat-label>Tags</mat-label>
+        <textarea matInput formControlName="Tags" type="text" ngModel placeholder="Computer, Cars, Furniture"></textarea>
+    </mat-form-field>
+    </p>
+    <button type="submit">Send post</button>
+  </form>     

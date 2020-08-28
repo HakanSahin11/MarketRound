@@ -31,8 +31,8 @@ export class HeaderComponent {
     });
   }
 
-  routeClick= function () {
-    this.router.navigateByUrl('/register')
+  newitemClick= function () {
+    this.router.navigateByUrl('/new-item')
   };
 
 }

@@ -1,14 +1,14 @@
-<form class="register-form">
+<form class="register-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <table class="register-full-width" cellspacing="0"><tr>
         <!-- First Name-->
       <td><mat-form-field class="register-full-width">
         <mat-label>First name</mat-label>
-        <input matInput>
+        <input matInput formControlName="name" type="text" ngModel>
       </mat-form-field></td>
       <!-- Last Name-->
       <td><mat-form-field class="register-full-width">
         <mat-label>Last Name</mat-label>
-        <input matInput>
+        <input matInput formControlName="lastname" type="text" ngModel>
       </mat-form-field></td>
     </tr></table>
 
@@ -16,12 +16,12 @@
         <!-- UserName-->
         <td><mat-form-field class="register-full-width">
         <mat-label>Username</mat-label>
-        <input matInput>
+        <input matInput formControlName="username" type="text" ngModel>
         </mat-form-field></td>
         <!-- Password-->
         <td><mat-form-field class="register-full-width">
         <mat-label>Password</mat-label>
-        <input matInput>
+        <input matInput formControlName="password" type="text" ngModel>
         </mat-form-field></td>
     </tr></table>
   
@@ -29,39 +29,48 @@
         <!-- Email-->
       <mat-form-field class="register-full-width">
         <mat-label>Email</mat-label>
-        <textarea matInput placeholder="email@something.com"></textarea>
+        <textarea matInput formControlName="email" type="text" ngModel placeholder="email@something.com"></textarea>
     </mat-form-field>
         <!-- Address-->
       <mat-form-field class="register-full-width">
         <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+        <textarea matInput formControlName="address" type="text" ngModel placeholder="Ex. 100 Main St"></textarea>
     </mat-form-field>
     </p>
   
     <table class="register-full-width" cellspacing="0"><tr>
+      <!-- country -->
     <td><mat-form-field class="register-full-width">
         <mat-label>country</mat-label>
-        <input matInput placeholder="Denmark">
+        <input matInput formControlName="country" type="text" ngModel placeholder="Denmark">
         </mat-form-field></td>
+        <!-- City -->
       <td><mat-form-field class="register-full-width">
         <mat-label>City</mat-label>
-        <input matInput placeholder="Ex. San Francisco">
+        <input matInput formControlName="city" type="text" ngModel placeholder="Ex. San Francisco">
       </mat-form-field></td>
     </tr></table>
 
     <table class="register-full-width" cellspacing="0"><tr>
+      <!-- Phonenumber -->
         <td><mat-form-field class="register-full-width">
-            <mat-label>Phonenumber</mat-label>
-            <input matInput placeholder="12345678">
+            <mat-label>phonenumber</mat-label>
+            <input matInput formControlName="phonenumber" type="text" ngModel placeholder="12345678">
           </mat-form-field></td>
+          <!-- PostalCode -->
           <td><mat-form-field class="register-full-width">
-            <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="4" placeholder="Ex. 8260">
+            <mat-label>postalCode</mat-label>
+            <input matInput formControlName="postalCode" type="text" ngModel #postalCode maxlength="4" placeholder="Ex. 8260">
             <mat-hint align="end">{{postalCode.value.length}} / 4</mat-hint>
           </mat-form-field></td>
     </tr></table>
+    <button type="submit">Send post</button>
+    {{registrationForm.value | json}}
+  </form>    
     
-  </form>       
+
+  
+
 
   <!-- 
         "username":"Test4",
